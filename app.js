@@ -6,11 +6,13 @@ Vue.createApp({
             outcome: '',
             colorWin: '',
             end: false,
+            // Les stats de l'ennemi
             jeff: {
                 health: 100,
                 att:20+(Math.round(Math.random()*5)),
                 def:5+(Math.round(Math.random()*5)),
             },
+            // Les stats du joueur
             sayann: {
                 health: 100,
                 att:10+(Math.round(Math.random()*10)),
@@ -22,6 +24,8 @@ Vue.createApp({
     },
     
     methods: {
+
+        //  Méthode qui est appelée à la pression du bouton "Recommencer" pour, comme son nom l'indique, réinitialiser le combat
         reset(){
             this.sayann.health = 100;
             this.jeff.health = 100;
@@ -30,6 +34,7 @@ Vue.createApp({
             this.outcome = '';
             this.battleLogs = [];
         },
+        // Méthode d'attque de l'ennemi, appelée par toutes les autres méthodes d'action
         attackAdversaire(){
             this.battleLogs.push("Jeff Pizza se jette sur Sayann ! Il lui inflige "+this.jeff.att+" points de dégats")
             let crit = Math.round(Math.random()*100)
@@ -43,6 +48,7 @@ Vue.createApp({
                 this.round ++;
             }
         },
+        // Méthode d'attaque "basique"
         kamehameha(){
             this.battleLogs.push("Sayann envoie un Kamehameha sur son adversaire! Il lui inflige "+this.sayann.att+" dégats !");
             let crit = Math.round(Math.random()*100);
@@ -56,6 +62,7 @@ Vue.createApp({
             }
             this.attackAdversaire();
         },
+        // Méthode d'attaque "spéciale"
         genkidama(){
             this.battleLogs.push("Sayann envoie un Genkidama sur son adversaire! Il lui inflige "+this.sayann.att * 3+" dégats !");
             let crit = Math.round(Math.random()*100);
@@ -68,6 +75,7 @@ Vue.createApp({
             }
             this.attackAdversaire();
         },
+        // Méthode de soin
         senzu(){
             let heal = 15+Math.round(Math.random()*12);
             if(this.sayann.health < 100){
@@ -78,6 +86,7 @@ Vue.createApp({
             this.battleLogs.push("Sayann mange un senzu! Il récupère "+heal+" hp !");
             this.attackAdversaire();
         },
+        // Méthode d'abandon
         giveUp(){
             this.sayann.health = 0;
             this.battleLogs.push("Sayann a abandonné pour laisser son fils prendre le relais!");
@@ -87,6 +96,9 @@ Vue.createApp({
 
     },
     watch: {
+
+        // Surveillance des HP des deux persos pour mettre fin à la game lorsque l'un des deux n'a plus de PV
+
         'jeff.health': function(hp) {
             if(hp <= 0){
                 this.jeff.health = 0;
@@ -99,12 +111,14 @@ Vue.createApp({
         'sayann.health': function(hp) {
             if(hp <= 0){
                 this.sayann.health = 0;
-                this.outcome = "DÉFAITE";
+                this.outcome = "DEFAITE";
                 this.colorWin = "red";
                 this.end = true;
                 this.battleLogs.push("Sayann a échoué, la terre court un grand danger !");
             }
         },
+
+        // Surveillance du numéro de tour pour rendre disponible ou non l'attaque spéciale (Genkidama)
         round(round){
             if(round%3 == 0){
                 this.special = false;

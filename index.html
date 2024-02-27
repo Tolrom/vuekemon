@@ -8,12 +8,17 @@
 </head>
 <body id="app">
     <header>
-        <h2>Adrarball Z BudokYann TenkaiJeff 3</h2>
+        <audio controls autoplay>
+            <source src="chala.mp3" type="audio/mpeg">
+            <source src="chala.mp3" type="audio/ogg">
+        </audio>
+        <img src="./images/Adrarball.png" alt="">
         <h4>Tour {{ round }}</h4>
     </header>
     <main>
         <div v-show="end" id="infos">
             <img v-if="outcome == 'VICTOIRE'" id="victory" src="./images/victory.gif" alt="">
+            <img v-if="outcome == 'DEFAITE'" id="victory" src="./images/loss.png" alt="">
             <input type="button" value="Recommencer" @click="reset">
         </div>
         <section>
