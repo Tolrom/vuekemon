@@ -11,6 +11,9 @@ header {
     justify-content: space-around;
     align-items: center;
 }
+li {
+    list-style: none;
+}
 h1 {
     width: 100%;
     text-align: center;
@@ -19,14 +22,34 @@ header h4 {
     align-self: center;
 }
 img {
-    width: 10em;
+    height: 10em;
     align-self: center;
+}
+.avatar{
+    position: absolute;
+    z-index: -2;
+}
+section:nth-child(2) .avatar {
+    left: 4.5%;
+}
+section:nth-child(3) .avatar {
+    left: 5.5%;
+}
+#aura {
+    top: -2em;
+    width: 14em;
+    height: 17em;
+    position: absolute;
+    z-index: -3;
+    left: 3%;
 }
 main {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-content: space-evenly;
+    background-image: url(./images/tournois.jpg);
+    background-size: cover;
 }
 section {
     display: flex;
@@ -44,11 +67,12 @@ h4 {
 section:nth-child(3),
 section:nth-child(2) {
     flex-direction: column;
-    background-color: #ddd;
+    backdrop-filter: blur(15px);
     border: 1px solid black;
     border-radius: 15px;
     padding: 2em;
     justify-content: space-between;
+    height: 25vh;
 }
 #healthbar,
 #health{
@@ -62,6 +86,7 @@ section:nth-child(2) {
 }
 #health {
     background-color: green;
+    transition: width 0.5s ease-in-out ;
 }
 section:nth-child(4){
     width: 50vw;
@@ -74,11 +99,61 @@ section:nth-child(4) input {
     margin: 2%;
     border-radius: 10px;
     cursor: pointer;
-    background-color: darkturquoise;
+    background-size: cover;
+    background-position: center;
+    font-weight: bold;
+    border: 1px solid white;
+    text-shadow: #fff 0 0 2px,
+                #fff 0 0 5px;
+    font-size: large;
 }
 input[disabled]{
     background-color: #aaa;
 }
+input{
+    font-weight: bold;
+}
 #infos{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 50;
+    left: 0;
+    right: 0;
+    background-color: aliceblue;
+    top: 30%;
+    padding: 2% 0;
+}
+#infos input{
+    margin: 1em 0 -1em 0;
+    padding: 1em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+section input:nth-child(1){
+    background-image: url(./images/kameha.jpg);
+}
+section input:nth-child(2){
+    background-image: url(./images/genkidama.jpg);
+}
+section input:nth-child(3){
+    background-image: url(./images/senju.webp);
+}
+section input:nth-child(4){
+    background-image: url(./images/gohan.jpg);
+}
+.player img:nth-child(3){
+    height: 8em;
+    position: absolute;
+}
+.player ul {
+    font-size: large;
+    font-weight: bold;
+}
+#victory {
+    mix-blend-mode: multiply;
+    width: 20%;
+    height: auto;
 }

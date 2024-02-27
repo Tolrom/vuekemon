@@ -12,14 +12,20 @@
         <h4>Tour {{ round }}</h4>
     </header>
     <main>
-        <div id="infos">
-            <h1 :style="{color : win}">{{ outcome }}</h1>
-            <input v-if="end" type="button" value="Recommencer" @click="reset">
+        <div v-show="end" id="infos">
+            <img v-if="outcome == 'VICTOIRE'" id="victory" src="./images/victory.gif" alt="">
+            <input type="button" value="Recommencer" @click="reset">
         </div>
         <section>
             <div class="player">
-                <img src="./images/jeffpizza.png" alt="Illustration de l'ennemi">
-                <h4>Jeff Pizza</h4>
+                <img class="avatar" src="./images/jeffpizza.png" alt="Illustration de l'ennemi">
+                <ul>
+                    <li>HP : {{ jeff.health }}</li>
+                    <li>Att : {{ jeff.att }}</li>
+                    <li>Def : {{ jeff.def }}</li>
+                </ul>
+                <img src="./images/jeff.png" alt="">
+                <img id="aura" src="./images/aura.gif" alt="">
             </div>
             <div id="healthbar">
                 <div id="health" :style="{ width: jeff.health + '%', backgroundColor: jeff.health < 25 ? 'red' : 'green' }">
@@ -28,8 +34,14 @@
         </section>
         <section>
             <div class="player">
-                <img src="./images/sayann.png" alt="Illustration du joueur">
-                <h4>Sayann</h4>
+                <img class="avatar" src="./images/sayann.png" alt="Illustration du joueur">
+                <ul>
+                    <li>HP : {{ sayann.health }}</li>
+                    <li>Att : {{ sayann.att }}</li>
+                    <li>Def : {{ sayann.def }}</li>
+                </ul>
+                <img src="./images/sayan.png" alt="">
+                <img id="aura" src="./images/aura.gif" alt="">
             </div>
             <div id="healthbar">
                 <div id="health" :style="{ width: sayann.health + '%', backgroundColor: sayann.health < 25 ? 'red' : 'green' }">
@@ -44,6 +56,9 @@
         </section>
         <section>
             <h2>Battle Log</h2>
+            <ul>
+                <li v-for="(log, index) in battleLogs"></li>
+            </ul>
         </section>
     </main>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
