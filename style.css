@@ -4,6 +4,54 @@
     box-sizing: border-box;
     font-family: Helvetica;
 }
+@keyframes genkidama {
+    0% { position:absolute; top:200px; left: 40px; transform: scale(1); opacity: 0.5;}
+    25% { opacity: 1;}
+    50% { transform: scale(2); opacity: 1;}
+    100% { position:absolute; top:-40px; left: 40px; transform: scale(3); opacity: 0;}
+}
+@keyframes momo {
+    from {
+        left:-30%;
+    }
+    to{
+        left:100%;
+    }
+}
+@keyframes bounce {
+    from {transform: translateY(0);}
+    to   {transform: translateY(-5px);}
+}
+
+.genkidama {
+background-image: url("flaming-sphere.gif");
+filter: invert(90%);
+width: 200px;
+height: 200px;
+object-fit: contain;
+margin-top: 150px;
+margin-left: auto;
+margin-right: auto;
+opacity: 0.5;
+animation: genkidama 5s;
+}
+
+.momo {
+position: fixed;
+background-image: url("./images/momo.gif");
+filter: saturate(2);
+bottom: -3.5%;
+width: 200px;
+height: 200px;
+object-fit: contain;
+animation: momo 5s infinite;
+}
+body {
+    background-image: url(./images/tournois.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
 header {
     background-color: orangered;
     height: 7vh;
@@ -28,9 +76,10 @@ img {
 .avatar{
     position: absolute;
     z-index: -2;
+    animation: bounce 0.35s ease infinite alternate;
 }
 section:nth-child(2) .avatar {
-    left: 4.5%;
+    right: 4.5%;
 }
 section:nth-child(3) .avatar {
     left: 5.5%;
@@ -41,15 +90,19 @@ section:nth-child(3) .avatar {
     height: 17em;
     position: absolute;
     z-index: -3;
+    animation: bounce 0.35s ease infinite alternate;
+}
+section:nth-child(3) .avatar+ul+img+img{
     left: 3%;
+}
+section:nth-child(2) .avatar+ul+img+img{
+    right: 8%;
 }
 main {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-content: space-evenly;
-    background-image: url(./images/tournois.jpg);
-    background-size: cover;
 }
 section {
     display: flex;
@@ -108,6 +161,7 @@ section:nth-child(4) input {
     font-size: large;
 }
 input[disabled]{
+    background-image: none;
     background-color: #aaa;
 }
 input{
@@ -156,4 +210,12 @@ section input:nth-child(4){
     mix-blend-mode: multiply;
     width: 20%;
     height: auto;
+}
+section:last-of-type{
+    align-self: center;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    padding: 1em;
+    backdrop-filter: blur(20px);    
 }

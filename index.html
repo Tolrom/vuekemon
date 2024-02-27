@@ -57,10 +57,13 @@
         <section>
             <h2>Battle Log</h2>
             <ul>
-                <li v-for="(log, index) in battleLogs"></li>
+                <li v-for="log in battleLogs">
+                    {{log }}
+                </li>
             </ul>
         </section>
     </main>
+    <div class="momo"></div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
 </body>
