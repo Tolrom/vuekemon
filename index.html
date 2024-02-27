@@ -8,9 +8,14 @@
 </head>
 <body id="app">
     <header>
-        FIGHT
+        <h2>Adrarball Z BudokYann TenkaiJeff 3</h2>
+        <h4>Tour {{ round }}</h4>
     </header>
     <main>
+        <div id="infos">
+            <h1 :style="{color : win}">{{ outcome }}</h1>
+            <input v-if="end" type="button" value="Recommencer" @click="reset">
+        </div>
         <section>
             <div class="player">
                 <img src="./images/jeffpizza.png" alt="Illustration de l'ennemi">
@@ -27,13 +32,13 @@
                 <h4>Sayann</h4>
             </div>
             <div id="healthbar">
-                <div id="health" :style="{ width: yann.health + '%', backgroundColor: yann.health < 25 ? 'red' : 'green' }">
+                <div id="health" :style="{ width: sayann.health + '%', backgroundColor: sayann.health < 25 ? 'red' : 'green' }">
                 </div>
             </div>
         </section>
         <section>
             <input type="button" value="Kamehameha" @click="kamehameha">
-            <input type="button" value="Genkidama" @click="genkidama" disabled>
+            <input type="button" value="Genkidama" @click="genkidama" :disabled="special">
             <input type="button" value="Senzu" @click="senzu">
             <input type="button" value="Sacrifice pour Gohan" @click="giveUp">
         </section>

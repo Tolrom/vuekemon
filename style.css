@@ -4,9 +4,22 @@
     box-sizing: border-box;
     font-family: Helvetica;
 }
+header {
+    background-color: orangered;
+    height: 7vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+h1 {
+    width: 100%;
+    text-align: center;
+}
+header h4 {
+    align-self: center;
+}
 img {
-    width: 8em;
-    height: 8em;
+    width: 10em;
     align-self: center;
 }
 main {
@@ -28,7 +41,7 @@ h4 {
     flex-direction: column;
     margin-bottom: 1em;
 }
-section:nth-child(1),
+section:nth-child(3),
 section:nth-child(2) {
     flex-direction: column;
     background-color: #ddd;
@@ -44,18 +57,18 @@ section:nth-child(2) {
     border-radius: 5px;
 }
 #healthbar {
-    background-color: aqua;
+    background-color: #303030;
     width: 100%;
 }
 #health {
     background-color: green;
 }
-section:nth-child(3){
+section:nth-child(4){
     width: 50vw;
     flex-wrap: wrap;
     align-self: center;
 }
-section:nth-child(3) input {
+section:nth-child(4) input {
     width: 46%;
     height: 5vh;
     margin: 2%;
@@ -65,4 +78,7 @@ section:nth-child(3) input {
 }
 input[disabled]{
     background-color: #aaa;
+}
+#infos{
+    display: flex;
 }
