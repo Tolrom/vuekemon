@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+}
+img {
+    width: 8em;
+    height: 8em;
+    align-self: center;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+section {
+    display: flex;
+    width: 95vw;
+    margin: 1em;
+}
+h4 {
+    align-self: flex-start;
+}
+.player {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+section:nth-child(1),
+section:nth-child(2) {
+    flex-direction: column;
+    background-color: #ddd;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 2em;
+    justify-content: space-between;
+}
+#healthbar,
+#health{
+    height: 2em;
+    align-self: center;
+    border-radius: 5px;
+}
+#healthbar {
+    background-color: aqua;
+    width: 100%;
+}
+#health {
+    background-color: green;
+}
+section:nth-child(3){
+    width: 50vw;
+    flex-wrap: wrap;
+    align-self: center;
+}
+section:nth-child(3) input {
+    width: 46%;
+    height: 5vh;
+    margin: 2%;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: darkturquoise;
+}
+input[disabled]{
+    background-color: #aaa;
+}
