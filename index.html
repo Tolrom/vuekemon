@@ -16,7 +16,7 @@
         <h4>Tour {{ round }}</h4>
     </header>
     <main>
-        <div v-show="end" id="infos">
+        <div v-show="end" id="infos" @wheel.prevent @touchmove.prevent @scroll.prevent>
             <img v-if="outcome == 'VICTOIRE'" id="victory" src="./images/victory.gif" alt="">
             <img v-if="outcome == 'DEFAITE'" id="victory" src="./images/loss.png" alt="">
             <input type="button" value="Recommencer" @click="reset">
@@ -57,7 +57,7 @@
             <input type="button" value="Kamehameha" @click="kamehameha">
             <input type="button" value="Genkidama" @click="genkidama" :disabled="special">
             <input type="button" value="Senzu" @click="senzu">
-            <input type="button" value="Sacrifice pour Gohan" @click="giveUp">
+            <input type="button" value="Sacrifice pour San Yohann" @click="giveUp">
         </section>
         <section>
             <h2>Battle Log</h2>
@@ -69,6 +69,7 @@
         </section>
     </main>
     <div class="momo"></div>
+    <div v-if="genkidanim" :class="{genkidama: genkidanim}"></div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
 </body>

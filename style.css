@@ -29,35 +29,58 @@
 /* L'animation des persos */
 @keyframes bounce {
     from {transform: translateY(0);}
-    to   {transform: translateY(-5px);}
+    to   {transform: translateY(-15px);}
 }
 
-/* PROJET GENKIDAMA
+/* PROJET GENKIDAMA */
 @keyframes genkidama {
-    0% { position:absolute; top:200px; left: 40px; transform: scale(1); opacity: 0.5;}
-    25% { opacity: 1;}
-    50% { transform: scale(2); opacity: 1;}
-    100% { position:absolute; top:-40px; left: 40px; transform: scale(3); opacity: 0;}
+  0% {
+    /* transform: translate(0); */
+    top: 50%;
+    left: 8%;
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  25% {
+    top: 50%;
+    left: 8%;
+    opacity: 1;
+  }
+  50% {
+    transform: scale(3);
+    opacity: 1;
+  }
+  100% {
+    /* transform: translate(10%, 80%); */
+    top: 25%;
+    left: 85%;
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 .genkidama {
-background-image: url("flaming-sphere.gif");
-filter: invert(90%);
-width: 200px;
-height: 200px;
-object-fit: contain;
-margin-top: 150px;
-margin-left: auto;
-margin-right: auto;
-opacity: 0.5;
-animation: genkidama 5s;
-} */
-
-
+    top: 50%;
+    left: 8%;
+    position: absolute;
+    background-image: url("./images/flaming-sphere.gif");
+    filter: invert(90%);
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    animation: genkidama 3s ;
+}
 body {
     background-image: url(./images/tournois.jpg);
     background-size: cover;
     background-attachment: fixed;
     overflow-x: hidden;
+}
+@keyframes headline{
+    from {transform: translateY(20px);}
+    to   {transform: translateY(0px);}
+}
+header img{
+    animation: headline 0.4s ease infinite alternate;
 }
 header {
     display: flex;
@@ -168,7 +191,7 @@ section:nth-child(4) input {
     border: 1px solid white;
     text-shadow: #fff 0 0 2px,
                 #fff 0 0 5px;
-    font-size: xx-large;
+    font-size: x-large;
 }
 input[disabled]{
     background-image: none;
@@ -236,4 +259,7 @@ section:nth-child(2) ul{
 audio {
     position: absolute;
     left: 10%;
+}
+input[type="button"]:hover {
+    transform: scale(1.1);
 }

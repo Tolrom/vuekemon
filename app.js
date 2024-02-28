@@ -20,6 +20,8 @@ Vue.createApp({
             },
             special: false,
             battleLogs: [],
+            overflowEnd: "scroll",
+            genkidanim: false,
         };
     },
     
@@ -31,6 +33,7 @@ Vue.createApp({
             this.jeff.health = 100;
             this.round = 0;
             this.end = false;
+            this.overflowEnd = "scroll";
             this.outcome = '';
             this.battleLogs = [];
         },
@@ -64,15 +67,22 @@ Vue.createApp({
         },
         // Méthode d'attaque "spéciale"
         genkidama(){
+            this.genkidanim = true;
             this.battleLogs.push("Sayann envoie un Genkidama sur son adversaire! Il lui inflige "+this.sayann.att * 3+" dégats !");
             let crit = Math.round(Math.random()*100);
-            if(crit >= 95){
-                this.battleLogs.push("Coup critique! Impossible pour Jeff Pizza de se défendre!");
-                this.jeff.health -= (this.sayann.att*3);
-            }else {
-                this.battleLogs.push("Jeff Pizza se défend! Il réduit les dégats de "+this.jeff.def);
-                this.jeff.health -= ((this.sayann.att * 3) - this.jeff.def);
-            }
+            setTimeout(() => {
+                if(crit >= 95){
+                    this.battleLogs.push("Coup critique! Impossible pour Jeff Pizza de se défendre!");
+                    this.jeff.health -= (this.sayann.att*3);
+                }else {
+                    this.battleLogs.push("Jeff Pizza se défend! Il réduit les dégats de "+this.jeff.def);
+                    this.jeff.health -= ((this.sayann.att * 3) - this.jeff.def);
+                }                
+            }, 2500);
+            setTimeout(() => {
+                this.genkidanim = false;
+                
+            }, 2500);
             this.attackAdversaire();
         },
         // Méthode de soin
@@ -105,6 +115,7 @@ Vue.createApp({
                 this.outcome = "VICTOIRE";
                 this.colorWin = "green";
                 this.end = true;
+                this.overflowEnd = "hidden";
                 this.battleLogs.push("Sayann a triomphé de son adversaire !");
             }
         },
@@ -114,6 +125,7 @@ Vue.createApp({
                 this.outcome = "DEFAITE";
                 this.colorWin = "red";
                 this.end = true;
+                this.overflowEnd = "hidden";
                 this.battleLogs.push("Sayann a échoué, la terre court un grand danger !");
             }
         },
